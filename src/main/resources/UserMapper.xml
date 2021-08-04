@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ssm_demo.mappers.UserMapper">
+
+    <!--<resultMap id="BaseResultMap" type="co<mapper namespace="com.test.dao.UserMapper">m.example.entity.User">-->
+        <!--<result column="id" jdbcType="INTEGER" property="id" />-->
+        <!--<result column="userName" jdbcType="VARCHAR" property="userName" />-->
+        <!--<result column="passWord" jdbcType="VARCHAR" property="passWord" />-->
+        <!--<result column="realName" jdbcType="VARCHAR" property="realName" />-->
+    <!--</resultMap>-->
+
+    com.test.
+
+    <select id="getUserByID" parameterType="long" resultType="com.example.ssm_demo.entity.User">
+        select * from `user` where id = #{asdf}
+    </select>
+    <insert
+            id="saveUser" parameterType="com.example.ssm_demo.entity.User"
+            useGeneratedKeys="true">
+        INSERT INTO `ssm_demo`.`user` ( `name`, `password`, `sex`, `brithday`)  values (#{name},#{password},#{sex},#{brithday})
+    </insert>
+    <select id="findUserByID" parameterType="int" resultMap="com.test.domain.User">
+        select * from user where id=#{id}
+    </select>
+    <!--<select id="findUserByUserName" parameterType="string" resultMap="com.test.domain.User">
+        select * from user where username like '%{username}'
+    </select>
+    <update id="updateUserByID" parameterType="com.test.domain.User">
+        update user set username=#{username},
+        password=#{password},sex=#{sex},
+        address=#{address} where id=#{id}
+    </update>
+    &lt;!&ndash;保存&ndash;&gt;
+    <insert id="insertUser" parameterType="com.test.domain.User">
+        insert into user values (#{id},#{username},#{birthday},#{sex},#{address})
+    </insert>-->
+</mapper>

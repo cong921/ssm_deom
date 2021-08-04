@@ -1,14 +1,20 @@
 package com.example.ssm_demo.entity;
 
-import java.sql.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 
 public class User {
 
   private long id;
   private String name;
   private String password;
-  private long sex;
-  private java.sql.Date brithday;
+  private int sex;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+  @DateTimeFormat(pattern ="yyyy-MM-dd HH:mm:ss")
+  private Date brithday;
 
 
 
@@ -39,28 +45,32 @@ public class User {
   }
 
 
-  public long getSex() {
+  public int getSex() {
     return sex;
   }
 
-  public void setSex(long sex) {
+  public void setSex(int sex) {
     this.sex = sex;
   }
 
 
-  public java.sql.Date getBrithday() {
+  public Date getBrithday() {
     return brithday;
   }
 
-  public void setBrithday(java.sql.Date brithday) {
+  public void setBrithday(Date brithday) {
     this.brithday = brithday;
   }
 
-  public User(long id, String name, String password, long sex, Date brithday) {
-    this.id = id;
-    this.name = name;
-    this.password = password;
-    this.sex = sex;
-    this.brithday = brithday;
+
+  @Override
+  public String toString() {
+    return "User{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", password='" + password + '\'' +
+            ", sex=" + sex +
+            ", brithday=" + brithday +
+            '}';
   }
 }

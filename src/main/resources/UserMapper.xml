@@ -2,27 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.ssm_demo.mappers.UserMapper">
-
-    <!--<resultMap id="BaseResultMap" type="co<mapper namespace="com.test.dao.UserMapper">m.example.entity.User">-->
-        <!--<result column="id" jdbcType="INTEGER" property="id" />-->
-        <!--<result column="userName" jdbcType="VARCHAR" property="userName" />-->
-        <!--<result column="passWord" jdbcType="VARCHAR" property="passWord" />-->
-        <!--<result column="realName" jdbcType="VARCHAR" property="realName" />-->
+    <resultMap id="BaseResultMap" type="com.example.ssm_demo.entity.User">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="sex" jdbcType="INTEGER" property="sex" />
+        <result column="birthday" javaType="java.util.Date" jdbcType="TIMESTAMP" property="birthday" />
+    </resultMap>
+    <!--<collection  id="users" ofType="com.example.ssm_demo.entity.User" property="">-->
+        <!--<result column="id" jdbcType="BIGINT" property="id" />-->
+        <!--<result column="name" jdbcType="VARCHAR" property="name" />-->
+        <!--<result column="password" jdbcType="VARCHAR" property="password" />-->
+        <!--<result column="sex" jdbcType="INTEGER" property="sex" />-->
+        <!--<result column="birthday" javaType="java.util.Date" jdbcType="TIMESTAMP" property="birthday" />-->
     <!--</resultMap>-->
 
-    com.test.
-
-    <select id="getUserByID" parameterType="long" resultType="com.example.ssm_demo.entity.User">
+    <select id="getUserByID" parameterType="long" resultType="user">
         select * from `user` where id = #{asdf}
     </select>
     <insert
-            id="saveUser" parameterType="com.example.ssm_demo.entity.User"
+            id="saveUser" parameterType="user"
             useGeneratedKeys="true">
         INSERT INTO `ssm_demo`.`user` ( `name`, `password`, `sex`, `brithday`)  values (#{name},#{password},#{sex},#{brithday})
     </insert>
-    <select id="findUserByID" parameterType="int" resultMap="com.test.domain.User">
-        select * from user where id=#{id}
+    <select
+            id="getUserList" resultMap="BaseResultMap">
+        select * from user
     </select>
+    <delete id="deleteUserById" >
+        delete  from  user where  id=#{id}
+    </delete>
+    <!--<select id="findUserByID" parameterType="int" resultMap="com.test.domain.User">
+        select * from user where id=#{id}
+    </select>-->
     <!--<select id="findUserByUserName" parameterType="string" resultMap="com.test.domain.User">
         select * from user where username like '%{username}'
     </select>

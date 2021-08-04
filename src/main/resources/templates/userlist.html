@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th=“http://www.thymeleaf.org”>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table >
+    <thead th:style="'background-color:'+@{'#F2F2F2'}">
+        <td th:text="id"></td>
+        <td th:text="name"></td>
+        <td th:text="password"></td>
+        <td th:text="brithday"></td>
+        <td th:text="sex"></td>
+    </thead>
+    <tr th:each="entries,stat:${users}" th:style="'background-color:'+@{${stat.odd}?'#F2F2F2'}">
+        <td th:text="${entries.id}"></td>
+        <td th:text="${entries.name}"></td>
+        <td th:text="${entries.password}"></td>
+        <td th:text="${#dates.format(entries.brithday, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td th:text="${entries.sex}"></td>
+    </tr>
+
+
+</table>
+</body>
+</html>
